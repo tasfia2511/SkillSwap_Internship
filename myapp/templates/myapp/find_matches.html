@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Find Matches - SkillSwap{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h1>Find Your Skill Matches</h1>
+
+        <p class="lead">
+            Find people who can teach you what you want
+            to learn and want to learn what you can teach.
+        </p>
+
+    </div>
+
+
+    {% if matches %}
+
+        <div class="row g-4">
+
+            {% for match in matches %}
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100 p-4">
+
+                        <h3>
+                            {{ match.profile.user.username }}
+                        </h3>
+
+
+                        <p>
+                            <strong>
+                                They can teach you:
+                            </strong>
+                        </p>
+
+                        <p>
+                            {{ match.can_teach_me|join:", " }}
+                        </p>
+
+
+                        <p>
+                            <strong>
+                                You can teach them:
+                            </strong>
+                        </p>
+
+                        <p>
+                            {{ match.i_can_teach|join:", " }}
+                        </p>
+
+
+                        <form
+                            method="POST"
+                            action="{% url 'send_match_request' match.profile.user.id %}"
+                        >
+
+                            {% csrf_token %}
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Send Match Request
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+
+    {% else %}
+
+        <div class="alert alert-info text-center">
+
+            <h4>No matches found yet.</h4>
+
+            <p>
+                Make sure you have filled in both
+                <strong>Skills I Have</strong> and
+                <strong>Skills I Want</strong> in your profile.
+            </p>
+
+            <a
+                href="{% url 'edit_profile' %}"
+                class="btn btn-primary"
+            >
+                Edit My Profile
+            </a>
+
+        </div>
+
+    {% endif %}
+
+
+    <div class="text-center mt-5">
+
+        <a
+            href="{% url 'match_list' %}"
+            class="btn btn-outline-primary"
+        >
+            My Matches
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

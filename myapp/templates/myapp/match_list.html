@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% block title %}My Matches{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1>My Matches</h1>
+        <p class="text-muted">
+            Manage your skill exchange requests and connections.
+        </p>
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- RECEIVED REQUESTS -->
+    <!-- ================================================= -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header">
+            <h4 class="mb-0">
+                📩 Match Requests
+            </h4>
+        </div>
+
+        <div class="card-body">
+
+            {% if received_requests %}
+
+                {% for match in received_requests %}
+
+                    <div class="border rounded p-3 mb-3">
+
+                        <h5>
+                            {{ match.sender.username }}
+                        </h5>
+
+                        <p class="mb-2">
+                            Wants to exchange:
+                            <strong>{{ match.skill }}</strong>
+                        </p>
+
+                        <div class="d-flex gap-2">
+
+                            <form
+                                method="POST"
+                                action="{% url 'accept_match' match.id %}"
+                            >
+                                {% csrf_token %}
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-success"
+                                >
+                                    Accept
+                                </button>
+
+                            </form>
+
+
+                            <form
+                                method="POST"
+                                action="{% url 'reject_match' match.id %}"
+                            >
+                                {% csrf_token %}
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-danger"
+                                >
+                                    Reject
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p class="text-muted mb-0">
+                    You don't have any pending match requests.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- SENT REQUESTS -->
+    <!-- ================================================= -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header">
+            <h4 class="mb-0">
+                📤 Sent Requests
+            </h4>
+        </div>
+
+        <div class="card-body">
+
+            {% if sent_requests %}
+
+                {% for match in sent_requests %}
+
+                    <div class="border rounded p-3 mb-3">
+
+                        <h5>
+                            {{ match.receiver.username }}
+                        </h5>
+
+                        <p class="mb-0">
+                            Skill:
+                            <strong>{{ match.skill }}</strong>
+                        </p>
+
+                        <small class="text-muted">
+                            Waiting for their response...
+                        </small>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p class="text-muted mb-0">
+                    You haven't sent any match requests yet.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- ACCEPTED MATCHES -->
+    <!-- ================================================= -->
+
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+            <h4 class="mb-0">
+                🤝 My SkillSwap Connections
+            </h4>
+        </div>
+
+        <div class="card-body">
+
+            {% if accepted_matches %}
+
+                {% for match in accepted_matches %}
+
+                    <div class="border rounded p-3 mb-3">
+
+                        {% if match.sender == request.user %}
+
+                            <h5>
+                                {{ match.receiver.username }}
+                            </h5>
+
+                            <p>
+                                You requested to exchange:
+                                <strong>{{ match.skill }}</strong>
+                            </p>
+
+                        {% else %}
+
+                            <h5>
+                                {{ match.sender.username }}
+                            </h5>
+
+                            <p>
+                                They want to exchange:
+                                <strong>{{ match.skill }}</strong>
+                            </p>
+
+                        {% endif %}
+
+                        <span class="badge bg-success">
+                            Matched ✓
+                        </span>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="text-center py-4">
+
+                    <h5>No active matches yet.</h5>
+
+                    <p class="text-muted">
+                        Find someone who has the skills you want
+                        and wants the skills you have.
+                    </p>
+
+                    <a
+                        href="{% url 'find_matches' %}"
+                        class="btn btn-primary"
+                    >
+                        Find Matches
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

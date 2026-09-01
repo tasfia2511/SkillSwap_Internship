@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile - SkillSwap{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8 col-lg-7">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body p-5">
+
+                    <!-- Profile Heading -->
+                    <div class="text-center mb-4">
+
+                        <div
+                            class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3"
+                            style="width: 90px; height: 90px; font-size: 36px;"
+                        >
+                            {{ profile.user.username|first|upper }}
+                        </div>
+
+                        <h2 class="fw-bold">
+                            {{ profile.user.username }}
+                        </h2>
+
+                        <p class="text-muted mb-0">
+                            {{ profile.user.email }}
+                        </p>
+
+                    </div>
+
+
+                    <hr>
+
+
+                    <!-- Bio -->
+                    <div class="mb-4">
+
+                        <h5 class="fw-bold">
+                            About Me
+                        </h5>
+
+                        {% if profile.bio %}
+                            <p class="text-muted">
+                                {{ profile.bio }}
+                            </p>
+                        {% else %}
+                            <p class="text-muted">
+                                No bio added yet.
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- Skills I Have -->
+                    <div class="mb-4">
+
+                        <h5 class="fw-bold">
+                            Skills I Have
+                        </h5>
+
+                        {% if profile.skills_have %}
+
+                            <div>
+                                {% for skill in profile.skills_have|cut:" "|cut:"," %}
+                                {% endfor %}
+
+                                <span class="badge bg-primary me-1 mb-1">
+                                    {{ profile.skills_have }}
+                                </span>
+                            </div>
+
+                        {% else %}
+
+                            <p class="text-muted">
+                                No skills added yet.
+                            </p>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- Skills I Want -->
+                    <div class="mb-4">
+
+                        <h5 class="fw-bold">
+                            Skills I Want to Learn
+                        </h5>
+
+                        {% if profile.skills_want %}
+
+                            <span class="badge bg-success me-1 mb-1">
+                                {{ profile.skills_want }}
+                            </span>
+
+                        {% else %}
+
+                            <p class="text-muted">
+                                No desired skills added yet.
+                            </p>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- Verification -->
+                    <div class="mb-4">
+
+                        <h5 class="fw-bold">
+                            Verification Status
+                        </h5>
+
+                        {% if profile.verified %}
+
+                            <span class="badge bg-success">
+                                ✓ Verified
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge bg-secondary">
+                                Not Verified
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <hr>
+
+
+                    <!-- Buttons -->
+                    <div class="text-center mt-4">
+
+                        <a
+                            href="{% url 'edit_profile' %}"
+                            class="btn btn-primary me-2"
+                        >
+                            Edit Profile
+                        </a>
+
+                        <a
+                            href="{% url 'find_matches' %}"
+                            class="btn btn-outline-primary"
+                        >
+                            Find Matches
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

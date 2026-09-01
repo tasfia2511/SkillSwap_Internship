@@ -1,0 +1,187 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Log In - SkillSwap</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'myapp/style.css' %}"
+    >
+
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- ====================================================
+             LEFT PANEL
+        ===================================================== -->
+
+        <div class="left-panel">
+
+            <div class="logo">
+
+                <h2>SkillSwap</h2>
+
+            </div>
+
+            <p>
+                Connect with a community of learners and experts.
+                Exchange your skills and grow together.
+            </p>
+
+        </div>
+
+
+        <!-- ====================================================
+             RIGHT PANEL
+        ===================================================== -->
+
+        <div class="right-panel">
+
+            <div class="login-form-container">
+
+                <h2>Log In</h2>
+
+
+                <!-- ====================================================
+                     LOGIN FORM
+                ===================================================== -->
+
+                <form
+                    method="post"
+                    action="{% url 'login' %}"
+                >
+
+                    {% csrf_token %}
+
+
+                    <!-- Preserve next URL -->
+
+                    <input
+                        type="hidden"
+                        name="next"
+                        value="{{ next }}"
+                    >
+
+
+                    <!-- Display non-field errors -->
+
+                    {% if form.non_field_errors %}
+
+                        <div class="alert alert-danger">
+
+                            {{ form.non_field_errors }}
+
+                        </div>
+
+                    {% endif %}
+
+
+                    <!-- Username -->
+
+                    <div class="form-group">
+
+                        <label for="{{ form.username.id_for_label }}">
+                            Username
+                        </label>
+
+                        {{ form.username }}
+
+                        {% if form.username.errors %}
+
+                            <div class="form-error">
+
+                                {{ form.username.errors }}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <label for="{{ form.password.id_for_label }}">
+                            Password
+                        </label>
+
+                        {{ form.password }}
+
+                        {% if form.password.errors %}
+
+                            <div class="form-error">
+
+                                {{ form.password.errors }}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- Forgot password -->
+
+                    <a
+                        href="#"
+                        class="forgot-password"
+                    >
+                        Forgot password?
+                    </a>
+
+
+                    <!-- Login button -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary w-100"
+                    >
+                        Log In
+                    </button>
+
+                </form>
+
+
+                <!-- ====================================================
+                     SIGNUP LINK
+                ===================================================== -->
+
+                <div class="signup-link">
+
+                    <p>
+
+                        Don't have an account?
+
+                        <a href="{% url 'signup' %}">
+                            Sign up here
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

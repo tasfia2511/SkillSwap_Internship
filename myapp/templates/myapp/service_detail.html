@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ service.title }} - SkillSwap
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h1>{{ service.title }}</h1>
+
+        <p class="lead">
+            {{ service.description }}
+        </p>
+
+    </div>
+
+
+    <div class="row g-3">
+
+        {% for skill in service.skills %}
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm p-3 h-100">
+
+                    <h4>
+                        {{ skill }}
+                    </h4>
+
+                    <p>
+                        Learn {{ skill }} from another
+                        SkillSwap member or share your
+                        knowledge with someone who wants
+                        to learn it.
+                    </p>
+
+                    {% if user.is_authenticated %}
+
+                        <a
+                            href="{% url 'edit_profile' %}"
+                            class="btn btn-outline-primary"
+                        >
+                            I Want to Learn This
+                        </a>
+
+                    {% else %}
+
+                        <a
+                            href="{% url 'signup' %}"
+                            class="btn btn-outline-primary"
+                        >
+                            Sign Up to Learn
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <div class="text-center mt-5">
+
+        <a
+            href="{% url 'services' %}"
+            class="btn btn-secondary"
+        >
+            Back to Services
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

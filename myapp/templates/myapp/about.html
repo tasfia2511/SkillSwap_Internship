@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <main>
+    <section class="hero container">
+      <h2 class="section-title">Mission, Vision &amp; Values</h2>
+      <p class="subtitle">What drives SkillSwap and how we measure success.</p>
+
+      <div class="three-grid">
+        <div class="card">
+          <h3>Mission</h3>
+          <p>Democratize access to skill-building by enabling fair, reciprocal learning.</p>
+        </div>
+        <div class="card">
+          <h3>Vision</h3>
+          <p>A global network where every learner can both teach and grow — irrespective of budget.</p>
+        </div>
+        <div class="card">
+          <h3>Values</h3>
+          <p>Transparency, reciprocity, safety, and measurable progress for both parties.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="action container">
+      <h3 class="action-title">See It In Action</h3>
+      <p class="action-sub">Here's how a typical skill exchange works on our platform</p>
+
+      <div class="exchange-area">
+        <!-- Left profile -->
+        <div class="profile-card left">
+         
+          <div class="profile-meta">
+            <div class="name">Sarah <span class="muted">(Web Developer)</span></div>
+            <div class="chips">
+              <span class="chip offer">Offers: React</span>
+              <span class="chip want">Wants: Spanish</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- center arrows -->
+        <div class="arrows">
+          <svg class="arrow-icon" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+            <g fill="none" stroke="#bfe0ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M48 20 L24 20"></path>
+              <path d="M32 12 L24 20 L32 28"></path>
+              <path d="M16 44 L40 44"></path>
+              <path d="M32 36 L40 44 L32 52"></path>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Right profile -->
+        <div class="profile-card right">
+         
+          <div class="profile-meta">
+            <div class="name">Carlos <span class="muted">(Spanish Teacher)</span></div>
+            <div class="chips">
+              <span class="chip offer">Offers: Spanish</span>
+              <span class="chip offer alt">Offers: React</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exchange plan box -->
+        <div class="plan-box">
+          <h4>Their Exchange Plan:</h4>
+          <ul>
+            <li>Weekly 1-hour session</li>
+            <li>30 min Spanish + 30 min React</li>
+            <li>Video calls + shared resources</li>
+            <li>Progress tracking &amp; goals</li>
+          </ul>
+          <p class="celebrate">Both learning their desired skills for FREE! 🎉</p>
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}

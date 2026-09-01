@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Profile - SkillSwap{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8 col-lg-7">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body p-5">
+
+                    <h2 class="text-center fw-bold mb-2">
+                        Edit Profile
+                    </h2>
+
+                    <p class="text-center text-muted mb-4">
+                        Update your SkillSwap profile information.
+                    </p>
+
+
+                    <form method="POST" enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+
+                        <!-- Account Information -->
+
+                        <h5 class="fw-bold mb-3">
+                            Account Information
+                        </h5>
+
+                        <div class="mb-3">
+
+                            <label
+                                for="{{ user_form.username.id_for_label }}"
+                                class="form-label"
+                            >
+                                Username
+                            </label>
+
+                            {{ user_form.username }}
+
+                            {% if user_form.username.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ user_form.username.errors }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label
+                                for="{{ user_form.email.id_for_label }}"
+                                class="form-label"
+                            >
+                                Email
+                            </label>
+
+                            {{ user_form.email }}
+
+                            {% if user_form.email.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ user_form.email.errors }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+
+                        <hr>
+
+
+                        <!-- Personal Information -->
+
+                        <h5 class="fw-bold mb-3">
+                            Personal Information
+                        </h5>
+
+                        <div class="mb-3">
+
+                            <label
+                                for="{{ profile_form.bio.id_for_label }}"
+                                class="form-label"
+                            >
+                                Bio
+                            </label>
+
+                            {{ profile_form.bio }}
+
+                            {% if profile_form.bio.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ profile_form.bio.errors }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="{{ profile_form.skills_have.id_for_label }}"
+                                class="form-label"
+                            >
+                                Skills I Have
+                            </label>
+
+                            {{ profile_form.skills_have }}
+
+                            {% if profile_form.skills_have.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ profile_form.skills_have.errors }}
+                                </div>
+                            {% endif %}
+
+                            <div class="form-text">
+                                Example: Python, Django, Java, Photoshop
+                            </div>
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label
+                                for="{{ profile_form.skills_want.id_for_label }}"
+                                class="form-label"
+                            >
+                                Skills I Want to Learn
+                            </label>
+
+                            {{ profile_form.skills_want }}
+
+                            {% if profile_form.skills_want.errors %}
+                                <div class="text-danger small mt-1">
+                                    {{ profile_form.skills_want.errors }}
+                                </div>
+                            {% endif %}
+
+                            <div class="form-text">
+                                Example: React, Node.js, AWS
+                            </div>
+
+                        </div>
+
+
+                        <!-- Buttons -->
+
+                        <div class="d-flex justify-content-between">
+
+                            <a
+                                href="{% url 'profile' %}"
+                                class="btn btn-outline-secondary"
+                            >
+                                Cancel
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Save Changes
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

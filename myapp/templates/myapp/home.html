@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="container hero-section text-center mt-5">
+
+    {% if user.is_authenticated %}
+
+        <!-- ================= LOGGED-IN HOME ================= -->
+
+        <h1 class="hero-title">
+            Welcome back, {{ user.username }}!
+        </h1>
+
+        <p class="hero-subtitle">
+            Ready to learn, teach, and exchange skills?
+        </p>
+
+        <div class="cta-buttons">
+
+            <a href="{% url 'profile' %}"
+               class="btn btn-primary btn-lg me-2">
+                View Profile
+            </a>
+
+            <a href="{% url 'find_matches' %}"
+               class="btn btn-outline-primary btn-lg">
+                Find Matches
+            </a>
+
+        </div>
+
+    {% else %}
+
+        <!-- ================= PUBLIC HOME ================= -->
+
+        <h1 class="hero-title">
+            SkillSwap
+        </h1>
+
+        <p class="hero-subtitle">
+            Discover, Share & Evolve
+        </p>
+
+        <div class="cta-buttons">
+
+            <a href="{% url 'signup' %}"
+               class="btn btn-primary btn-lg me-2">
+                Start Your Journey
+            </a>
+
+            <a href="{% url 'login' %}"
+               class="btn btn-outline-secondary btn-lg">
+                I Already Have an Account
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+
+<!-- ================= FEATURES SECTION ================= -->
+
+<div class="container py-5">
+
+    <div class="row text-center">
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card feature-card p-4 h-100">
+
+                <h4>📖 Learn Freely</h4>
+
+                <p>
+                    Pick up skills you've always dreamed of—
+                    coding, photography, cooking, and more—
+                    right from the community.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card feature-card p-4 h-100">
+
+                <h4>🎓 Teach What You Know</h4>
+
+                <p>
+                    Empower others by sharing your knowledge.
+                    Whether you're a professional or passionate
+                    hobbyist, you have something to offer.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card feature-card p-4 h-100">
+
+                <h4>🌐 Build Real Connections</h4>
+
+                <p>
+                    Meet curious minds from all walks of life.
+                    Learn together. Grow together.
+                    SkillSwap is more than an app—it’s a movement.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="text-center py-3 bg-light mt-5">
+
+    <p class="text-muted mb-0">
+        © 2025 SkillSwap. Created with purpose and passion.
+    </p>
+
+</footer>
+
+{% endblock %}

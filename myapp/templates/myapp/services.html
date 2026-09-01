@@ -1,0 +1,728 @@
+{% extends "base.html" %}
+
+{% block title %}Services | SkillSwap{% endblock %}
+
+{% block content %}
+
+<style>
+    .services-page {
+        padding: 40px 0 70px;
+    }
+
+    .services-header {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    .services-header h1 {
+        color: #174ea6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .services-header p {
+        color: #666;
+        font-size: 1.1rem;
+    }
+
+    .category-card {
+        border: none;
+        border-radius: 18px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        height: 100%;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        text-align: center;
+        padding: 25px;
+    }
+
+    .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    .category-icon {
+        font-size: 42px;
+        margin-bottom: 12px;
+    }
+
+    .category-card h3 {
+        color: #1f3c88;
+        font-weight: 600;
+    }
+
+    .category-card p {
+        color: #666;
+        min-height: 65px;
+    }
+
+    .view-btn {
+        border-radius: 25px;
+        padding: 8px 22px;
+        background-color: #174ea6;
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 500;
+    }
+
+    .view-btn:hover {
+        background-color: #0d3b82;
+        color: white;
+    }
+
+    .skills-section {
+        margin-top: 70px;
+        padding: 35px;
+        border-radius: 18px;
+        background: #f8fbff;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+        scroll-margin-top: 90px;
+    }
+
+    .skills-section h2 {
+        color: #174ea6;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .skills-section .description {
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    .skill-item {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        height: 100%;
+        border: 1px solid #e8eef7;
+    }
+
+    .skill-item h5 {
+        color: #1f3c88;
+        font-weight: 600;
+    }
+
+    .skill-item p {
+        color: #666;
+        margin-bottom: 0;
+    }
+
+    .skill-tag {
+        display: inline-block;
+        background: #e8f1ff;
+        color: #174ea6;
+        border-radius: 20px;
+        padding: 6px 13px;
+        margin: 4px;
+        font-size: 0.9rem;
+    }
+
+    .back-top {
+        margin-top: 25px;
+    }
+</style>
+
+
+<div class="services-page">
+
+    <!-- ================================================= -->
+    <!-- HEADER -->
+    <!-- ================================================= -->
+
+    <div class="services-header">
+
+        <h1>Explore Skills</h1>
+
+        <p>
+            Discover different skills you can learn, teach,
+            and exchange with other members of the SkillSwap community.
+        </p>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- CATEGORY CARDS -->
+    <!-- ================================================= -->
+
+    <div class="row g-4">
+
+        <!-- Technology -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    💻
+                </div>
+
+                <h3>Technology</h3>
+
+                <p>
+                    Learn programming, web development, software tools,
+                    databases, and other technical skills.
+                </p>
+
+                <a href="#technology" class="view-btn">
+                    View Skills
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Creative Arts -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🎨
+                </div>
+
+                <h3>Creative Arts</h3>
+
+                <p>
+                    Explore drawing, painting, photography, graphic design,
+                    video editing, and other creative skills.
+                </p>
+
+                <a href="#creative-arts" class="view-btn">
+                    View Skills
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Music -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🎵
+                </div>
+
+                <h3>Music</h3>
+
+                <p>
+                    Learn instruments, singing, music production,
+                    songwriting, and other musical skills.
+                </p>
+
+                <a href="#music" class="view-btn">
+                    View Skills
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Languages -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    🌐
+                </div>
+
+                <h3>Languages</h3>
+
+                <p>
+                    Practice new languages, improve communication,
+                    pronunciation, vocabulary, and conversation skills.
+                </p>
+
+                <a href="#languages" class="view-btn">
+                    View Skills
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Professional / Career -->
+        <div class="col-md-6 col-lg-4">
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    💼
+                </div>
+
+                <h3>Professional / Career</h3>
+
+                <p>
+                    Build career-related skills such as communication,
+                    marketing, presentation, and professional development.
+                </p>
+
+                <a href="#professional-career" class="view-btn">
+                    View Skills
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- TECHNOLOGY -->
+    <!-- ================================================= -->
+
+    <section id="technology" class="skills-section">
+
+        <h2>💻 Technology Skills</h2>
+
+        <p class="description">
+            Exchange technical knowledge with learners and developers.
+            These skills can help you build websites, applications,
+            software projects, and technical solutions.
+        </p>
+
+        <div class="row g-3">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Python</h5>
+                    <p>
+                        Learn Python programming, problem solving,
+                        automation, and application development.
+                    </p>
+                    <span class="skill-tag">Python</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Web Development</h5>
+                    <p>
+                        Learn how to create websites using HTML,
+                        CSS, JavaScript, and modern web technologies.
+                    </p>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Django</h5>
+                    <p>
+                        Learn backend development and build
+                        web applications using the Django framework.
+                    </p>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">Python</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Java</h5>
+                    <p>
+                        Learn object-oriented programming,
+                        application development, and Java fundamentals.
+                    </p>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">OOP</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Database & SQL</h5>
+                    <p>
+                        Learn database design, SQL queries,
+                        data management, and relational databases.
+                    </p>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Database</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Git & GitHub</h5>
+                    <p>
+                        Learn version control, collaboration,
+                        repositories, branches, and project management.
+                    </p>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="back-top">
+            <a href="#" class="text-decoration-none">
+                ↑ Back to Categories
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- CREATIVE ARTS -->
+    <!-- ================================================= -->
+
+    <section id="creative-arts" class="skills-section">
+
+        <h2>🎨 Creative Arts Skills</h2>
+
+        <p class="description">
+            Share your creativity and learn visual and artistic
+            skills from other members.
+        </p>
+
+        <div class="row g-3">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Drawing & Sketching</h5>
+                    <p>
+                        Learn basic drawing, sketching techniques,
+                        proportions, shading, and visual observation.
+                    </p>
+                    <span class="skill-tag">Drawing</span>
+                    <span class="skill-tag">Sketching</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Painting</h5>
+                    <p>
+                        Explore painting techniques, composition,
+                        color mixing, and artistic expression.
+                    </p>
+                    <span class="skill-tag">Painting</span>
+                    <span class="skill-tag">Color Theory</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Photography</h5>
+                    <p>
+                        Learn photography basics, composition,
+                        lighting, framing, and photo editing.
+                    </p>
+                    <span class="skill-tag">Photography</span>
+                    <span class="skill-tag">Editing</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Graphic Design</h5>
+                    <p>
+                        Learn visual design, layouts, typography,
+                        branding, and digital graphics.
+                    </p>
+                    <span class="skill-tag">Design</span>
+                    <span class="skill-tag">Typography</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Video Editing</h5>
+                    <p>
+                        Learn video editing, transitions,
+                        storytelling, effects, and basic production.
+                    </p>
+                    <span class="skill-tag">Video</span>
+                    <span class="skill-tag">Editing</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="back-top">
+            <a href="#" class="text-decoration-none">
+                ↑ Back to Categories
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- MUSIC -->
+    <!-- ================================================= -->
+
+    <section id="music" class="skills-section">
+
+        <h2>🎵 Music Skills</h2>
+
+        <p class="description">
+            Connect with musicians and exchange knowledge about
+            instruments, vocals, songwriting, and music production.
+        </p>
+
+        <div class="row g-3">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Guitar</h5>
+                    <p>
+                        Learn guitar basics, chords, strumming,
+                        songs, and practice techniques.
+                    </p>
+                    <span class="skill-tag">Guitar</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Piano</h5>
+                    <p>
+                        Learn piano fundamentals, scales,
+                        chords, melodies, and basic music theory.
+                    </p>
+                    <span class="skill-tag">Piano</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Singing</h5>
+                    <p>
+                        Improve vocal technique, pitch,
+                        breathing, pronunciation, and performance.
+                    </p>
+                    <span class="skill-tag">Vocals</span>
+                    <span class="skill-tag">Singing</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Music Production</h5>
+                    <p>
+                        Explore recording, digital audio,
+                        arrangement, mixing, and production basics.
+                    </p>
+                    <span class="skill-tag">Production</span>
+                    <span class="skill-tag">Audio</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Songwriting</h5>
+                    <p>
+                        Learn songwriting, lyrics, melodies,
+                        composition, and musical storytelling.
+                    </p>
+                    <span class="skill-tag">Songwriting</span>
+                    <span class="skill-tag">Composition</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="back-top">
+            <a href="#" class="text-decoration-none">
+                ↑ Back to Categories
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- LANGUAGES -->
+    <!-- ================================================= -->
+
+    <section id="languages" class="skills-section">
+
+        <h2>🌐 Language Skills</h2>
+
+        <p class="description">
+            Practice languages with other learners and speakers.
+            Improve your vocabulary, pronunciation, grammar,
+            and everyday conversation.
+        </p>
+
+        <div class="row g-3">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>English</h5>
+                    <p>
+                        Improve conversational English,
+                        vocabulary, grammar, writing, and pronunciation.
+                    </p>
+                    <span class="skill-tag">English</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Spanish</h5>
+                    <p>
+                        Practice Spanish vocabulary,
+                        conversation, pronunciation, and grammar.
+                    </p>
+                    <span class="skill-tag">Spanish</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>French</h5>
+                    <p>
+                        Learn everyday French conversation,
+                        vocabulary, pronunciation, and grammar.
+                    </p>
+                    <span class="skill-tag">French</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Japanese</h5>
+                    <p>
+                        Practice Japanese vocabulary,
+                        basic conversation, reading, and writing.
+                    </p>
+                    <span class="skill-tag">Japanese</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Public Speaking</h5>
+                    <p>
+                        Improve communication, confidence,
+                        pronunciation, and presentation skills.
+                    </p>
+                    <span class="skill-tag">Speaking</span>
+                    <span class="skill-tag">Communication</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="back-top">
+            <a href="#" class="text-decoration-none">
+                ↑ Back to Categories
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- PROFESSIONAL / CAREER -->
+    <!-- ================================================= -->
+
+    <section id="professional-career" class="skills-section">
+
+        <h2>💼 Professional & Career Skills</h2>
+
+        <p class="description">
+            Develop practical professional skills that can help
+            you communicate effectively, work confidently,
+            and prepare for career opportunities.
+        </p>
+
+        <div class="row g-3">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Communication</h5>
+                    <p>
+                        Improve professional communication,
+                        active listening, and workplace interaction.
+                    </p>
+                    <span class="skill-tag">Communication</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Resume & CV</h5>
+                    <p>
+                        Learn how to structure a professional CV,
+                        highlight skills, and present experience effectively.
+                    </p>
+                    <span class="skill-tag">CV</span>
+                    <span class="skill-tag">Resume</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Interview Preparation</h5>
+                    <p>
+                        Practice interview questions,
+                        communication, confidence, and professional presentation.
+                    </p>
+                    <span class="skill-tag">Interview</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Digital Marketing</h5>
+                    <p>
+                        Learn social media marketing,
+                        content strategy, branding, and online promotion.
+                    </p>
+                    <span class="skill-tag">Marketing</span>
+                    <span class="skill-tag">Social Media</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Presentation Skills</h5>
+                    <p>
+                        Improve presentation structure,
+                        public speaking, visual communication, and confidence.
+                    </p>
+                    <span class="skill-tag">Presentation</span>
+                    <span class="skill-tag">Public Speaking</span>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="skill-item">
+                    <h5>Networking</h5>
+                    <p>
+                        Learn how to build professional relationships,
+                        communicate with peers, and grow your network.
+                    </p>
+                    <span class="skill-tag">Networking</span>
+                    <span class="skill-tag">Career</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="back-top">
+            <a href="#" class="text-decoration-none">
+                ↑ Back to Categories
+            </a>
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

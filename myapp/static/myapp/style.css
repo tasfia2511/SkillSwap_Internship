@@ -1,0 +1,443 @@
+/*
+ * Global Stylesheet for SkillSwap
+ * Includes: Landing, Login, Signup, Services, How it Works, and About Page
+ * Consistent design across all sections
+ */
+
+/* ==================
+   Font Imports
+   ================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ==================
+   Global Variables
+   ================== */
+:root {
+  --primary-color: #2a368b;
+  --secondary-color: #f0f4f8;
+  --text-color: #1a202c;
+  --text-light-color: #f9f9f9;
+  --accent-color: #4b5563;
+  --button-hover-bg: #4b5bb3;
+  --border-radius: 8px;
+  --font-inter: 'Inter', sans-serif;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* About page theme */
+  --bg1: #07104a;
+  --bg2: #071a7a;
+  --accent: #6fd8ff;
+  --accent-2: #3b6bff;
+  --muted: rgba(255,255,255,0.65);
+  --card-bg: rgba(255,255,255,0.03);
+  --glass: rgba(255,255,255,0.04);
+  --chip-bg: rgba(255,255,255,0.06);
+  --radius: 12px;
+  --container-w: 1100px;
+  --text: #eaf2ff;
+}
+
+/* ==================
+   Base Styles
+   ================== */
+body {
+  font-family: var(--font-inter);
+  color: var(--text-color);
+  background-color: var(--secondary-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* ==================
+   Button & Input Styles
+   ================== */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-light-color);
+}
+.btn-primary:hover { background-color: var(--button-hover-bg); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+.btn-secondary:hover {
+  background: var(--primary-color);
+  color: var(--text-light-color);
+}
+
+.btn-social {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 8px;
+ padding: 12px 20px;
+ border-radius: var(--border-radius);
+ border: 1px solid #d1d5db;
+ background: #fff;
+ color: var(--accent-color);
+ box-shadow: var(--box-shadow);
+}
+
+input[type="email"], input[type="password"], input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: var(--border-radius);
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  font-family: var(--font-inter);
+}
+
+/* ==================
+   Layout & Components
+   ================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.header-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.nav-links a { margin-left: 24px; font-weight: 500; }
+
+.hero {
+  color: var(--text-light-color);
+  background: var(--primary-color);
+  padding: 60px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content { position: relative; z-index: 2; }
+.hero h1 { font-size: 3rem; margin-bottom: 16px; color: #fff; }
+.hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 32px; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 24px;
+  text-align: center;
+}
+.card h3 { margin-top: 0; font-size: 1.25rem; font-weight: 600; }
+
+.footer {
+  text-align: center;
+  padding: 24px 0;
+  background: var(--primary-color);
+  color: var(--text-light-color);
+}
+.footer .social-icons a {
+  color: var(--text-light-color);
+  margin: 0 8px;
+  font-size: 1.5rem;
+}
+
+/* --- DELETED: Previous login styles.
+.split-form-container { display: flex; min-height: 100vh; }
+.split-form-left {
+  background: var(--primary-color);
+  color: var(--text-light-color);
+  display: flex; justify-content: center; align-items: center;
+  padding: 20px; flex: 1;
+}
+.split-form-right {
+  background: var(--secondary-color);
+  display: flex; justify-content: center; align-items: center;
+  padding: 20px; flex: 1;
+}
+.form-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  max-width: 400px;
+  width: 100%;
+}
+--- */
+
+/* ==================
+   New Login Page Styles
+   ================== */
+.login-container {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    height: 600px;
+    background-color: #e3f2fd; /* Light blue background for the entire container */
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.left-panel {
+    width: 40%;
+    background-color: var(--primary-color);
+    color: var(--text-light-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.left-panel p {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+.right-panel {
+    width: 60%;
+    background-color: #e3f2fd; /* Light blue background for the login form section */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.login-form-container {
+    width: 80%;
+    max-width: 400px;
+}
+
+.right-panel h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+    text-align: left;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-bottom: 2px solid var(--primary-color);
+    background-color: transparent;
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-login .btn-social {
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    color: var(--accent-color);
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-grow: 1;
+    box-shadow: none;
+}
+
+.social-login .btn-social img {
+    height: 20px;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.signup-link p {
+    color: var(--primary-color);
+}
+
+.signup-link a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ==================
+   About Page Styles
+   ================== */
+.about-header {
+  text-align: center;
+  padding: 50px 0 20px;
+}
+.about-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  color: var(--primary-color);
+}
+.about-header p {
+  font-size: 1rem;
+  color: var(--accent-color);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.principles-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding-bottom: 50px;
+}
+.principle-card {
+  background: #f0f4f8;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 24px;
+  text-align: center;
+}
+.principle-card h3 {
+  font-size: 1.25rem; margin: 0 0 8px; color: var(--primary-color);
+}
+.principle-card p { font-size: 1rem; color: var(--text-color); }
+
+/* Glassmorphism Exchange Section */
+.exchange-section {
+  background: linear-gradient(180deg,var(--bg1), var(--bg2) 65%);
+  padding: 60px 0;
+  text-align: center;
+  color: var(--text);
+}
+.exchange-title {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+.exchange-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Profile / Person Cards */
+.person-card, .profile-card {
+  background: var(--glass);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.person-card h4, .profile-meta .name {
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: var(--text);
+}
+.person-card p, .muted { font-size: 0.9rem; color: var(--muted); }
+
+/* Plan Card */
+.exchange-plan-card, .plan-box {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: var(--text);
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.03);
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: left;
+}
+.exchange-plan-card h4, .plan-box h4 {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+}
+.exchange-plan-card ul, .plan-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 18px;
+  color: var(--muted);
+}
+.exchange-plan-card li { margin-bottom: 8px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .exchange-flow { flex-direction: column; }
+  .three-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}SkillSwap{% endblock %}
+    </title>
+
+
+    <!-- ========================================================
+         BOOTSTRAP
+    ========================================================= -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- ========================================================
+         CUSTOM STYLES
+    ========================================================= -->
+
+    <style>
+
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #007bff !important;
+        }
+
+        .nav-link {
+            margin-left: 8px;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .hero-title {
+            color: #1456a0;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #555;
+        }
+
+        .logout-button {
+            border: 1px solid #007bff;
+            background: transparent;
+            color: #007bff;
+            border-radius: 6px;
+            padding: 6px 12px;
+            margin-left: 8px;
+        }
+
+        .logout-button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+
+    <div class="container">
+
+        <!-- BRAND -->
+
+        <a
+            class="navbar-brand"
+            href="{% url 'home' %}"
+        >
+            SkillSwap
+        </a>
+
+
+        <!-- MOBILE NAVBAR BUTTON -->
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <!-- ====================================================
+             NAVIGATION
+        ===================================================== -->
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav"
+        >
+
+            <ul class="navbar-nav ms-auto">
+
+
+                <!-- =================================================
+                     PUBLIC PAGES
+                ================================================== -->
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'home' %}"
+                    >
+                        Home
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'about' %}"
+                    >
+                        About
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="{% url 'services' %}"
+                    >
+                        Services
+                    </a>
+
+                </li>
+
+
+                <!-- =================================================
+                     AUTHENTICATED USER
+                ================================================== -->
+
+                {% if user.is_authenticated %}
+
+
+                    <!-- PROFILE -->
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="{% url 'profile' %}"
+                        >
+                            Profile
+                        </a>
+
+                    </li>
+
+
+                    <!-- EDIT PROFILE -->
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="{% url 'edit_profile' %}"
+                        >
+                            Edit Profile
+                        </a>
+
+                    </li>
+
+
+                    <!-- FIND MATCHES -->
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="{% url 'find_matches' %}"
+                        >
+                            Find Matches
+                        </a>
+
+                    </li>
+
+
+                    <!-- MY MATCHES -->
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="{% url 'match_list' %}"
+                        >
+                            My Matches
+                        </a>
+
+                    </li>
+
+
+                    <!-- LOGOUT -->
+
+                    <li class="nav-item">
+
+                        <form
+                            method="post"
+                            action="{% url 'logout' %}"
+                            class="d-inline"
+                        >
+
+                            {% csrf_token %}
+
+                            <button
+                                type="submit"
+                                class="logout-button"
+                            >
+                                Logout
+                            </button>
+
+                        </form>
+
+                    </li>
+
+
+                {% else %}
+
+
+                <!-- =================================================
+                     NOT AUTHENTICATED
+                ================================================== -->
+
+                    <!-- LOGIN -->
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link btn btn-outline-primary"
+                            href="{% url 'login' %}"
+                        >
+                            Login
+                        </a>
+
+                    </li>
+
+
+                    <!-- SIGN UP -->
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link btn btn-primary text-white ms-2"
+                            href="{% url 'signup' %}"
+                        >
+                            Sign Up
+                        </a>
+
+                    </li>
+
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ========================================================
+     DJANGO MESSAGES
+========================================================= -->
+
+<div class="container">
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div
+                class="alert alert-{{ message.tags }}"
+                role="alert"
+            >
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+</div>
+
+
+<!-- ========================================================
+     PAGE CONTENT
+========================================================= -->
+
+<div class="container">
+
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+
+
+<!-- ========================================================
+     BOOTSTRAP JAVASCRIPT
+========================================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+
+
+</body>
+
+</html>
