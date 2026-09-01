@@ -1,0 +1,20 @@
+2026-08-14 18:56:16,911 INFO User tasfia.toma connected to room general
+2026-08-14 18:56:28,705 INFO User tasfia.toma connected to room general
+2026-08-14 19:29:29,360 INFO User tasfia.toma connected to room general
+2026-08-14 19:29:41,409 INFO User tasfia.toma connected to room general
+2026-08-14 19:30:09,658 INFO User tasfia.toma connected to room general
+2026-08-14 19:35:17,199 INFO User tasfia.toma connected to room general
+2026-08-14 19:35:18,709 INFO User tasfia.toma sent message to room general
+2026-08-18 19:20:52,779 INFO User tasfia.toma connected to room general
+2026-08-18 19:28:11,948 WARNING Unauthenticated WebSocket rejected.
+2026-08-18 19:28:11,963 INFO WebSocket disconnected. User=Anonymous Room=general CloseCode=1006
+2026-08-18 19:28:59,159 WARNING Unauthenticated WebSocket rejected.
+2026-08-18 19:28:59,181 INFO WebSocket disconnected. User=Anonymous Room=general CloseCode=1006
+2026-08-18 19:29:09,423 WARNING Unauthenticated WebSocket rejected.
+2026-08-18 19:29:09,432 INFO WebSocket disconnected. User=Anonymous Room=general CloseCode=1006
+2026-08-18 19:30:14,862 INFO User tasfia.toma connected to room general
+2026-08-18 19:48:26,020 INFO User tasfia.toma connected to room general
+2026-08-18 20:31:31,373 INFO User tasfia.toma connected to room general
+2026-08-18 20:40:42,894 INFO User tasfia.toma connected to room general
+2026-08-18 20:54:40,468 INFO User tasfia.toma connected to room general
+2026-08-18 21:17:36,658 INFO User tasfia.toma connected to room general
