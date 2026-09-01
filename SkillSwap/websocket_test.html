@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SkillSwap WebSocket Test</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        #messages {
+            border: 1px solid #ccc;
+            padding: 15px;
+            min-height: 200px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>SkillSwap WebSocket Test</h1>
+
+    <label>JWT Access Token:</label>
+
+    <input
+        id="token"
+        type="text"
+        placeholder="Paste your access token here"
+    >
+
+    <label>Room:</label>
+
+    <input
+        id="room"
+        type="text"
+        value="general"
+    >
+
+    <button onclick="connectWebSocket()">
+        Connect
+    </button>
+
+    <hr>
+
+    <label>Message:</label>
+
+    <input
+        id="message"
+        type="text"
+        placeholder="Type a message"
+    >
+
+    <button onclick="sendMessage()">
+        Send Message
+    </button>
+
+    <div id="status">
+        Status: Disconnected
+    </div>
+
+    <div id="messages"></div>
+
+
+    <script>
+
+        let socket = null;
+
+
+        function connectWebSocket() {
+
+            const token =
+                document.getElementById(
+                    'token'
+                ).value.trim();
+
+            const room =
+                document.getElementById(
+                    'room'
+                ).value.trim();
+
+
+            if (!token) {
+
+                alert(
+                    'Please enter your JWT access token.'
+                );
+
+                return;
+            }
+
+
+            if (!room) {
+
+                alert(
+                    'Please enter a room name.'
+                );
+
+                return;
+            }
+
+
+            const wsUrl =
+                `ws://127.0.0.1:8000/ws/chat/${encodeURIComponent(room)}/?token=${encodeURIComponent(token)}`;
+
+
+            console.log(
+                'Connecting to:',
+                `ws://127.0.0.1:8000/ws/chat/${room}/`
+            );
+
+
+            socket = new WebSocket(
+                wsUrl
+            );
+
+
+            socket.onopen = function() {
+
+                console.log(
+                    'WebSocket connection established.'
+                );
+
+                document.getElementById(
+                    'status'
+                ).innerText =
+                    'Status: Connected';
+
+                addMessage(
+                    'Connected to room: ' + room
+                );
+            };
+
+
+            socket.onmessage = function(event) {
+
+                console.log(
+                    'WebSocket message:',
+                    event.data
+                );
+
+                try {
+
+                    const data =
+                        JSON.parse(
+                            event.data
+                        );
+
+                    addMessage(
+                        data.username +
+                        ': ' +
+                        data.message
+                    );
+
+                } catch (error) {
+
+                    console.error(
+                        'Invalid WebSocket message:',
+                        error
+                    );
+
+                    addMessage(
+                        event.data
+                    );
+                }
+            };
+
+
+            socket.onerror = function(error) {
+
+                console.error(
+                    'WebSocket error:',
+                    error
+                );
+
+                document.getElementById(
+                    'status'
+                ).innerText =
+                    'Status: Error';
+            };
+
+
+            socket.onclose = function(event) {
+
+                console.log(
+                    'WebSocket closed:',
+                    'code =',
+                    event.code,
+                    'reason =',
+                    event.reason,
+                    'wasClean =',
+                    event.wasClean
+                );
+
+                document.getElementById(
+                    'status'
+                ).innerText =
+                    'Status: Disconnected';
+
+                addMessage(
+                    'WebSocket disconnected. ' +
+                    'Code: ' +
+                    event.code +
+                    ', Reason: ' +
+                    (event.reason || 'None')
+                );
+            };
+        }
+
+
+        function sendMessage() {
+
+            if (
+                !socket ||
+                socket.readyState !== WebSocket.OPEN
+            ) {
+
+                alert(
+                    'WebSocket is not connected.'
+                );
+
+                return;
+            }
+
+
+            const message =
+                document.getElementById(
+                    'message'
+                ).value.trim();
+
+
+            if (!message) {
+                return;
+            }
+
+
+            socket.send(
+                JSON.stringify({
+                    message: message
+                })
+            );
+
+
+            console.log(
+                'Message sent:',
+                message
+            );
+
+
+            document.getElementById(
+                'message'
+            ).value = '';
+        }
+
+
+        function addMessage(message) {
+
+            const div =
+                document.createElement(
+                    'div'
+                );
+
+            div.innerText = message;
+
+            document.getElementById(
+                'messages'
+            ).appendChild(div);
+        }
+
+    </script>
+
+</body>
+</html>
